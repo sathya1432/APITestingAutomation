@@ -1,54 +1,25 @@
 {
 	"info": {
-		"_postman_id": "f99b2207-a305-48e4-bd6a-948d0cb8728e",
-		"name": "APITesting",
+		"_postman_id": "4774f1d2-6071-4c6f-ab7a-6310f9154093",
+		"name": "My Collection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1467756",
-		"_collection_link": "https://galactic-zodiac-495810.postman.co/workspace/CNATSSep2025~e8e6825a-172f-43c6-be87-e9069ef3e06a/collection/1467756-f99b2207-a305-48e4-bd6a-948d0cb8728e?action=share&source=collection_link&creator=1467756"
+		"_exporter_id": "48382938",
+		"_collection_link": "https://sathyasivakas-2643895.postman.co/workspace/sathya-siva's-Workspace~d35176cc-91ce-44eb-8ab1-a5e5cee8cc78/collection/48382938-4774f1d2-6071-4c6f-ab7a-6310f9154093?action=share&source=collection_link&creator=48382938"
 	},
 	"item": [
 		{
-			"name": "Prod20",
+			"name": "Get Prod20",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"Mirror\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Check JSON Data\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.id).to.eql(15);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"let jsonData = pm.response.json();\r",
-							"// Check if any review has rating 5\r",
-							"let hasFiveStar = jsonData.reviews.some(review => review.rating === 5);\r",
-							"// Check if any review has rating 5\r",
-							"let hasPleasedComment = jsonData.reviews.some(review =>\r",
-							"    review.comment.toLowerCase().includes(\"pleased\"));\r",
-							"\r",
-							"pm.test(\"At least one review has a rating of 5\", function () {\r",
-							"    pm.expect(hasFiveStar).to.be.true;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"At least one review comment contains the word 'Pleased'\", function () {\r",
-							"    pm.expect(hasPleasedComment).to.be.true;\r",
-							"});\r",
-							""
-						],
 						"type": "text/javascript",
-						"packages": {}
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
 					}
 				}
 			],
@@ -56,54 +27,34 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dummyjson.com/products/20",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"20"
-					]
-				}
+					"raw": ""
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 			},
 			"response": []
 		},
 		{
-			"name": "ProdSearch",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://dummyjson.com/products/search?q=phone",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"search"
-					],
-					"query": [
-						{
-							"key": "q",
-							"value": "phone"
-						}
-					]
+			"name": "Post Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						]
+					}
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "AddProd",
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"My own product\",\r\n    \"description\": \"This is the description of my product.\",\r\n    \"category\": \"furniture\",\r\n    \"price\": 4.99,\r\n    \"discountPercentage\": 9.33,\r\n    \"rating\": 5.0\r\n}\r\n",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,70 +62,57 @@
 					}
 				},
 				"url": {
-					"raw": "https://dummyjson.com/products/add",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"add"
-					]
-				}
+					"raw": ""
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
 			},
 			"response": []
 		},
 		{
-			"name": "PutReq",
+			"name": "APITesting",
 			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Smitha Product\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dummyjson.com/products/20",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"20"
-					]
-				}
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		},
 		{
-			"name": "DelRec",
+			"name": "New Request",
 			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Smitha Product\"\r\n}\r\n"
-				},
-				"url": {
-					"raw": "https://dummyjson.com/products/20",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"products",
-						"20"
-					]
-				}
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "POST Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Request",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
